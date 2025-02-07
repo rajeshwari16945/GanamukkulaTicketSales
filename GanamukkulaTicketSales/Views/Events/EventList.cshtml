@@ -1,0 +1,33 @@
+﻿@*
+    Created by Ganamukkula
+    12 12 12 12 12 12 12 12
+*@
+@model ListViewModel
+@{
+}
+<div>
+    <p><a asp-controller = "Events" asp-action="EventList" asp-route-id = "All" style="margin-right: 16px;">All</a>
+
+    
+    @foreach(Category cat in Model.Categories)
+    {
+            <a asp-controller="Events" asp-action="EventList" asp-route-id="@cat.CategoryName" style="margin-right: 16px;">@cat.CategoryName</a>
+    }
+    </>
+    <p>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">@Model.SelectedCategory Events</th>
+                </tr>
+            </thead>
+            @foreach(var evt in Model.Events)
+            {
+                <tr>
+                    <td>@evt.Title</td>
+                    <td><a asp-controller="Events" asp-action="Details" asp-route-id ="@evt.Id">View Details</a></td>
+                </tr>
+            }
+        </table>
+    </p>
+</div>
